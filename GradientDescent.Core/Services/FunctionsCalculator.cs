@@ -9,11 +9,15 @@ namespace GradientDescent.Core.Services
     {
         private readonly IValuesNormalizer valuesNormalizer;
         private readonly IDataSourceSupplier dataSupplier;
-
-        public FunctionsCalculator(IValuesNormalizer valuesNormalizer, IDataSourceSupplier dataSupplier)
+        private readonly IDataTransformer dataTransformer;
+        public FunctionsCalculator(
+            IValuesNormalizer valuesNormalizer, 
+            IDataSourceSupplier dataSupplier,
+            IDataTransformer dataTransformer)
         {
             this.valuesNormalizer = valuesNormalizer;
             this.dataSupplier = dataSupplier;
+            this.dataTransformer = dataTransformer;
         }
 
         public double Hypothesis(double[] features, double[] theta)
@@ -25,16 +29,15 @@ namespace GradientDescent.Core.Services
 
         public double CostFuction(double[] theta)
         {
-            throw new NotImplementedException();
-            //var houses = dataSupplier.GetData().ToList();
-            //var numberOfTrainingExamples = houses.Count;
-            //double result = 0.0;
-            //for (int i = 1; i <= numberOfTrainingExamples; i++)
-            //{
-            //    var features = GetFeaturesVector(houses[i]);
-            //    result += Math.Pow(Hypothesis(features, theta) - houses[i].Price, 2);
-            //}
-            //return 1 * result / (2 * numberOfTrainingExamples);
+            var houses = this.dataSupplier.GetData().ToList();
+            var numberOfTrainingExamples = houses.Count;
+            double result = 0.0;
+            for (int i = 1; i <= numberOfTrainingExamples; i++)
+            {
+                var features = this.dataTransformer.GetFeaturesVector(houses[i]);
+                result += Math.Pow(Hypothesis(features, theta) - houses[i].Price, 2);
+            }
+            return 1 * result / (2 * numberOfTrainingExamples);
         }
     }
 }
