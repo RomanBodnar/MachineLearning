@@ -56,9 +56,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GradientDescent.Common\GradientDescent.Common.csproj">
+      <Project>{e2970c90-18c9-4637-9909-8b6b4ce7f836}</Project>
+      <Name>GradientDescent.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GradientDescent.Core\GradientDescent.Core.csproj">
       <Project>{fa490265-58f3-4883-b2f0-8e19c594298a}</Project>
       <Name>GradientDescent.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GradientDescent.Data\GradientDescent.Data.csproj">
+      <Project>{a123c6dd-a9ae-4164-ab2f-00a9585f414e}</Project>
+      <Name>GradientDescent.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

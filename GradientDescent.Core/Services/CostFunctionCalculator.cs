@@ -4,6 +4,5 @@ namespace GradientDescent.Core.Services
 {
     public class CostFunctionCalculator : ICostFunctionCalculator
     {
-        public double 
     }
 }

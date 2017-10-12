@@ -45,6 +45,11 @@
     <Compile Include="Entities\House.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GradientDescent.Common\GradientDescent.Common.csproj">
+      <Project>{e2970c90-18c9-4637-9909-8b6b4ce7f836}</Project>
+      <Name>GradientDescent.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
