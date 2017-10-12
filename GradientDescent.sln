@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradientDescent.Core", "Gra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradientDescent.Data", "GradientDescent.Data\GradientDescent.Data.csproj", "{A123C6DD-A9AE-4164-AB2F-00A9585F414E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradientDescent.Common", "GradientDescent.Common\GradientDescent.Common.csproj", "{E2970C90-18C9-4637-9909-8B6B4CE7F836}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A123C6DD-A9AE-4164-AB2F-00A9585F414E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A123C6DD-A9AE-4164-AB2F-00A9585F414E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A123C6DD-A9AE-4164-AB2F-00A9585F414E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2970C90-18C9-4637-9909-8B6B4CE7F836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2970C90-18C9-4637-9909-8B6B4CE7F836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2970C90-18C9-4637-9909-8B6B4CE7F836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2970C90-18C9-4637-9909-8B6B4CE7F836}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
