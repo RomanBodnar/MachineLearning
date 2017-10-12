@@ -135,8 +135,9 @@ namespace GradientDescent.MultipleFeatures
             return newTheta.ToArray();
         }
 
-        public double ScaleFeature()
+        public double NormalizeData(double[] data)
         {
+            double maxElement = data.Max();
             return 0;
         }
     }
