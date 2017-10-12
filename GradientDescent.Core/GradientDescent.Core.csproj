@@ -40,11 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\ICostFunctionCalculator.cs" />
+    <Compile Include="Contracts\IFunctionsCalculator.cs" />
     <Compile Include="Contracts\IGradientDescentCalculator.cs" />
     <Compile Include="Contracts\IValuesNormalizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CostFunctionCalculator.cs" />
+    <Compile Include="Services\FunctionsCalculator.cs" />
     <Compile Include="Services\GradientDescentCalculator.cs" />
     <Compile Include="Services\ValueNormalizer.cs" />
   </ItemGroup>
