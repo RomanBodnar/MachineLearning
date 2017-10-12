@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradientDescent.MultipleFeatures", "GradientDescent.MultipleFeatures\GradientDescent.MultipleFeatures.csproj", "{EBDB0D67-241B-4953-BB8C-1C55A3AB9E4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradientDescent.Plot", "GradientDescent.Plot\GradientDescent.Plot.csproj", "{1C229942-FE48-4811-B8BF-B64976159B0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradientDescent.Core", "GradientDescent.Core\GradientDescent.Core.csproj", "{FA490265-58F3-4883-B2F0-8E19C594298A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1C229942-FE48-4811-B8BF-B64976159B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C229942-FE48-4811-B8BF-B64976159B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C229942-FE48-4811-B8BF-B64976159B0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA490265-58F3-4883-B2F0-8E19C594298A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA490265-58F3-4883-B2F0-8E19C594298A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA490265-58F3-4883-B2F0-8E19C594298A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA490265-58F3-4883-B2F0-8E19C594298A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

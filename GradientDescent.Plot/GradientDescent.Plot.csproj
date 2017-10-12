@@ -95,6 +95,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GradientDescent.Core\GradientDescent.Core.csproj">
+      <Project>{fa490265-58f3-4883-b2f0-8e19c594298a}</Project>
+      <Name>GradientDescent.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GradientDescent.MultipleFeatures\GradientDescent.MultipleFeatures.csproj">
+      <Project>{ebdb0d67-241b-4953-bb8c-1c55a3ab9e4c}</Project>
+      <Name>GradientDescent.MultipleFeatures</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
