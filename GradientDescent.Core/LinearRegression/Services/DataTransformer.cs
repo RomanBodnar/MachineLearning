@@ -1,7 +1,7 @@
-﻿using GradientDescent.Core.Contracts;
+﻿using GradientDescent.Core.LinearRegression.Contracts;
 using GradientDescent.Data.Entities;
 
-namespace GradientDescent.Core.Services
+namespace GradientDescent.Core.LinearRegression.Services
 {
     public class DataTransformer : IDataTransformer
     {

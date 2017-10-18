@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using GradientDescent.Core.Contracts;
+using GradientDescent.Core.LinearRegression.Contracts;
 using GradientDescent.Data.DataSource.Contracts;
 
-namespace GradientDescent.Core.Services
+namespace GradientDescent.Core.LinearRegression.Services
 {
     public class FunctionsCalculator : IFunctionsCalculator
     {
@@ -22,8 +22,9 @@ namespace GradientDescent.Core.Services
 
         public double Hypothesis(double[] features, double[] theta)
         {
-            double hypothesis = features[0] * theta[0] + features[1] * theta[1] + features[2] * theta[2] +
-                                features[3] * theta[3] + features[4] * theta[4];
+            //double hypothesis = features[0] * theta[0] + features[1] * theta[1] + features[2] * theta[2] +
+            //                    features[3] * theta[3] + features[4] * theta[4];
+            double hypothesis = features.Zip(theta, (x, t) => x*t).Sum();
             return hypothesis;
         }
 

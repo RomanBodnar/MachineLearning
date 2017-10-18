@@ -1,6 +1,6 @@
 ﻿using GradientDescent.Data.Entities;
 
-namespace GradientDescent.Core.Contracts
+namespace GradientDescent.Core.LinearRegression.Contracts
 {
     public interface IDataTransformer
     {

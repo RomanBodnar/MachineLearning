@@ -1,4 +1,4 @@
-﻿namespace GradientDescent.Core.Contracts
+﻿namespace GradientDescent.Core.LinearRegression.Contracts
 {
     public interface IFunctionsCalculator
     {
