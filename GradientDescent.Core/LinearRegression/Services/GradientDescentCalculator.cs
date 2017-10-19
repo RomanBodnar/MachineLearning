@@ -28,7 +28,7 @@ namespace GradientDescent.Core.LinearRegression.Services
             var numberOfTrainingExamples = houses.Count;
 
             double result = 0.0;
-            for (int i = 0; i<numberOfTrainingExamples; i++)
+            for (int i = 0; i< numberOfTrainingExamples; i++)
             {
                 var features = this.dataTransformer.GetFeaturesVector(houses[i]);
                 result += (this.functions.Hypothesis(features, theta) - houses[i].Price) * features[featureNumber];
