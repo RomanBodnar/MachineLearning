@@ -62,6 +62,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModels\MainWindowModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -120,6 +122,9 @@
       <Project>{ebdb0d67-241b-4953-bb8c-1c55a3ab9e4c}</Project>
       <Name>GradientDescent.MultipleFeatures</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
