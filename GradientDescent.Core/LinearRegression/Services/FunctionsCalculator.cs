@@ -10,6 +10,7 @@ namespace GradientDescent.Core.LinearRegression.Services
         private readonly IValuesNormalizer valuesNormalizer;
         private readonly IDataSourceSupplier dataSupplier;
         private readonly IDataTransformer dataTransformer;
+
         public FunctionsCalculator(
             IValuesNormalizer valuesNormalizer, 
             IDataSourceSupplier dataSupplier,
@@ -30,13 +31,13 @@ namespace GradientDescent.Core.LinearRegression.Services
 
         public double CostFuction(double[] theta)
         {
-            var houses = this.dataSupplier.GetData().ToList();
-            var numberOfTrainingExamples = houses.Count;
+            var trainingSet = this.dataSupplier.GetTrainingSet().ToList();
+            var numberOfTrainingExamples = trainingSet.Count;
             double result = 0.0;
             for (int i = 1; i <= numberOfTrainingExamples; i++)
             {
-                var features = this.dataTransformer.GetFeaturesVector(houses[i]);
-                result += Math.Pow(Hypothesis(features, theta) - houses[i].Price, 2);
+                var features = trainingSet[i].Features.ToArray();
+                result += Math.Pow(Hypothesis(features, theta) - trainingSet[i].Result, 2);
             }
             return 1 * result / (2 * numberOfTrainingExamples);
         }

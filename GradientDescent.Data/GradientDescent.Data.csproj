@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="DataSource\Contracts\IDataSourceSupplier.cs" />
     <Compile Include="DataSource\DataSourceSupplier.cs" />
-    <Compile Include="Entities\House.cs" />
+    <Compile Include="Models\LinearRegression\TrainingElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

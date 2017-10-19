@@ -10,28 +10,26 @@ namespace GradientDescent.Core.LinearRegression.Services
     {
         private readonly IFunctionsCalculator functions;
         private readonly IDataSourceSupplier dataSupplier;
-        private readonly IDataTransformer dataTransformer;
+        private readonly IValuesNormalizer valuesNormalizer;
 
         public GradientDescentCalculator(
             IFunctionsCalculator functions,
-            IDataSourceSupplier dataSupplier,
-            IDataTransformer dataTransformer)
+            IDataSourceSupplier dataSupplier)
         {
             this.functions = functions;
             this.dataSupplier = dataSupplier;
-            this.dataTransformer = dataTransformer;
         }
 
         public double CalculateNewTheta(double[] theta, double alpha, int featureNumber)
         {
-            var houses = this.dataSupplier.GetData().ToList();
-            var numberOfTrainingExamples = houses.Count;
-
+            var trainingSet = this.dataSupplier.GetTrainingSet().ToList();
+            var numberOfTrainingExamples = trainingSet.Count;
+           
             double result = 0.0;
             for (int i = 0; i< numberOfTrainingExamples; i++)
             {
-                var features = this.dataTransformer.GetFeaturesVector(houses[i]);
-                result += (this.functions.Hypothesis(features, theta) - houses[i].Price) * features[featureNumber];
+                var features = trainingSet[i].Features.ToArray();
+                result += (this.functions.Hypothesis(features, theta) - trainingSet[i].Result) * features[featureNumber];
             }
             return (1 * alpha * result) / numberOfTrainingExamples;
         }

@@ -1,20 +1,21 @@
-﻿using GradientDescent.Core.LinearRegression.Contracts;
-using GradientDescent.Data.Entities;
+﻿using System;
+using GradientDescent.Core.LinearRegression.Contracts;
 
 namespace GradientDescent.Core.LinearRegression.Services
 {
     public class DataTransformer : IDataTransformer
     {
-        public double[] GetFeaturesVector(House house)
+        public double[] GetFeaturesVector()
         {
-            return new double[]
-            {
-                1,
-                house.Size,
-                house.NumberOfBedrooms,
-                house.NumberOfFloors,
-                house.Age
-            };
+            throw new NotImplementedException();
+            //return new double[]
+            //{
+            //    1,
+            //    house.Size,
+            //    house.NumberOfBedrooms,
+            //    house.NumberOfFloors,
+            //    house.Age
+            //};
         }
     }
 }
