@@ -27,7 +27,8 @@ namespace GradientDescent.Data.DataSource
                         var numbers = this.SplitString(line).ToList();
                         resultList.Add(new TrainingElement
                         {
-                            Features = this.GetFeatures(numbers)
+                            Features = this.GetFeatures(numbers),
+                            Result = this.GetResult(numbers)
                         });
                     }
                 }

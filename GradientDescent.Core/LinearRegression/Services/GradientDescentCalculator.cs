@@ -33,7 +33,7 @@ namespace GradientDescent.Core.LinearRegression.Services
             var numberOfTrainingExamples = trainingSet.Count;
            
             double result = 0.0;
-            for (int i = 0; i< numberOfTrainingExamples; i++)
+            for (int i = 0; i < numberOfTrainingExamples; i++)
             {
                 var features = trainingSet[i].Features.ToArray();
                 result += (this.functions.Hypothesis(features, theta) - trainingSet[i].Result) * features[featureNumber];

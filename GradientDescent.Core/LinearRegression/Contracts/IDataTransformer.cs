@@ -1,7 +1,10 @@
-﻿namespace GradientDescent.Core.LinearRegression.Contracts
+﻿using System.Collections.Generic;
+using GradientDescent.Data.Models.LinearRegression;
+
+namespace GradientDescent.Core.LinearRegression.Contracts
 {
     public interface IDataTransformer
     {
-        double[] GetFeaturesVector();
+        IEnumerable<double> GetNthFeatureVector(IEnumerable<TrainingElement> trainingSet, int featureNumber);
     }
 }
