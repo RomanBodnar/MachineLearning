@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using GradientDescent.Core.LinearRegression.Contracts;
+using GradientDescent.Data.DataSource;
 using GradientDescent.Data.DataSource.Contracts;
 
 namespace GradientDescent.Core.LinearRegression.Services
@@ -10,6 +11,13 @@ namespace GradientDescent.Core.LinearRegression.Services
         private readonly IValuesNormalizer valuesNormalizer;
         private readonly IDataSourceSupplier dataSupplier;
         private readonly IDataTransformer dataTransformer;
+
+        public FunctionsCalculator()
+        {
+            this.valuesNormalizer = new ValueNormalizer();
+            this.dataSupplier = new DataSourceSupplier();
+            this.dataTransformer = new DataTransformer();
+        }
 
         public FunctionsCalculator(
             IValuesNormalizer valuesNormalizer, 

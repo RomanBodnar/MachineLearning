@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using GradientDescent.Data.DataSource.Contracts;
 using GradientDescent.Data.Models.LinearRegression;
 
@@ -33,7 +34,8 @@ namespace GradientDescent.Data.DataSource
 
         private double[] SplitString(string inputString)
         {
-            throw new NotImplementedException();
+            var split = inputString.Split(',');
+            return split.Select(double.Parse).ToArray();
         }
     }
 }

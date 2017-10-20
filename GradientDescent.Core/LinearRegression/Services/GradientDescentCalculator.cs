@@ -2,6 +2,7 @@
 using System.Linq;
 using GradientDescent.Common;
 using GradientDescent.Core.LinearRegression.Contracts;
+using GradientDescent.Data.DataSource;
 using GradientDescent.Data.DataSource.Contracts;
 
 namespace GradientDescent.Core.LinearRegression.Services
@@ -11,6 +12,12 @@ namespace GradientDescent.Core.LinearRegression.Services
         private readonly IFunctionsCalculator functions;
         private readonly IDataSourceSupplier dataSupplier;
         private readonly IValuesNormalizer valuesNormalizer;
+
+        public GradientDescentCalculator()
+        {
+            this.functions = new FunctionsCalculator();
+            this.dataSupplier = new DataSourceSupplier();
+        }
 
         public GradientDescentCalculator(
             IFunctionsCalculator functions,
