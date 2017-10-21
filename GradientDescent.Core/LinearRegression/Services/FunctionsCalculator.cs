@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GradientDescent.Core.LinearRegression.Contracts;
 using GradientDescent.Data.DataSource;
 using GradientDescent.Data.DataSource.Contracts;
+using GradientDescent.Data.Models.LinearRegression;
 
 namespace GradientDescent.Core.LinearRegression.Services
 {
@@ -12,8 +14,11 @@ namespace GradientDescent.Core.LinearRegression.Services
         private readonly IDataSourceSupplier dataSupplier;
         private readonly IDataTransformer dataTransformer;
 
-        public FunctionsCalculator()
+        public List<TrainingElement> TrainingSet { get; set; }
+        
+        public FunctionsCalculator(IEnumerable<TrainingElement> trainingSet)
         {
+            this.TrainingSet = trainingSet.ToList();
             this.valuesNormalizer = new ValueNormalizer();
             this.dataSupplier = new DataSourceSupplier();
             this.dataTransformer = new DataTransformer();
@@ -39,13 +44,20 @@ namespace GradientDescent.Core.LinearRegression.Services
 
         public double CostFuction(double[] theta)
         {
-            var trainingSet = this.dataSupplier.GetTrainingSet().ToList();
-            var numberOfTrainingExamples = trainingSet.Count;
+            //var trainingSet = this.dataSupplier.GetTrainingSet().ToList();
+            var numberOfTrainingExamples = this.TrainingSet.Count;
             double result = 0.0;
-            for (int i = 1; i <= numberOfTrainingExamples; i++)
+            try
             {
-                var features = trainingSet[i].Features.ToArray();
-                result += Math.Pow(Hypothesis(features, theta) - trainingSet[i].Result, 2);
+                for (int i = 0; i < numberOfTrainingExamples; i++)
+                {
+                    var features = this.TrainingSet[i].Features.ToArray();
+                    result += Math.Pow(Hypothesis(features, theta) - this.TrainingSet[i].Result, 2);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
             return 1 * result / (2 * numberOfTrainingExamples);
         }

@@ -68,7 +68,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="ViewModels\MainWindowModel.cs" />
+    <Compile Include="ViewModels\MainWindowModelLinearRegression.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -123,13 +123,14 @@
       <Project>{a123c6dd-a9ae-4164-ab2f-00a9585f414e}</Project>
       <Name>GradientDescent.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GradientDescent.MultipleFeatures\GradientDescent.MultipleFeatures.csproj">
+    <ProjectReference Include="..\GradientDescent.MultipleFeatures\GradientDescent.LinearRegression.csproj">
       <Project>{ebdb0d67-241b-4953-bb8c-1c55a3ab9e4c}</Project>
-      <Name>GradientDescent.MultipleFeatures</Name>
+      <Name>GradientDescent.LinearRegression</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Data\" />
+    <Resource Include="DataSets\ex1data2.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

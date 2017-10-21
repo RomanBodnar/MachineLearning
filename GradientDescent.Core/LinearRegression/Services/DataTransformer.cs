@@ -12,14 +12,5 @@ namespace GradientDescent.Core.LinearRegression.Services
         {
             return trainingSet.Select(x => x.Features.ToList()[featureNumber]);
         }
-
-        public IEnumerable<TrainingElement> GetTrainingSet(List<double[]> allFeatures)
-        {
-            var resultList = new List<TrainingElement>();
-
-
-
-            return resultList;
-        }
     }
 }

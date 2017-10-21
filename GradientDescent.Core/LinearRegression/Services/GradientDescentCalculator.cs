@@ -4,6 +4,7 @@ using GradientDescent.Common;
 using GradientDescent.Core.LinearRegression.Contracts;
 using GradientDescent.Data.DataSource;
 using GradientDescent.Data.DataSource.Contracts;
+using GradientDescent.Data.Models.LinearRegression;
 
 namespace GradientDescent.Core.LinearRegression.Services
 {
@@ -13,9 +14,12 @@ namespace GradientDescent.Core.LinearRegression.Services
         private readonly IDataSourceSupplier dataSupplier;
         private readonly IValuesNormalizer valuesNormalizer;
 
-        public GradientDescentCalculator()
+        public List<TrainingElement> trainingSet;
+
+        public GradientDescentCalculator(IEnumerable<TrainingElement> trainingSet)
         {
-            this.functions = new FunctionsCalculator();
+            this.trainingSet = trainingSet.ToList();
+            this.functions = new FunctionsCalculator(trainingSet);
             this.dataSupplier = new DataSourceSupplier();
         }
 
@@ -27,9 +31,10 @@ namespace GradientDescent.Core.LinearRegression.Services
             this.dataSupplier = dataSupplier;
         }
 
+        // todo: consider make it Private
         public double CalculateNewTheta(double[] theta, double alpha, int featureNumber)
         {
-            var trainingSet = this.dataSupplier.GetTrainingSet().ToList();
+            //var trainingSet = this.dataSupplier.GetTrainingSet().ToList();
             var numberOfTrainingExamples = trainingSet.Count;
            
             double result = 0.0;
@@ -41,11 +46,11 @@ namespace GradientDescent.Core.LinearRegression.Services
             return (1 * alpha * result) / numberOfTrainingExamples;
         }
 
-        public double[] Descent(double[] theta, double alpha)
+        public double[] Descent(double[] theta, double alpha, int numberOfFeatures)
         {
             List<double> newTheta = new List<double>();
 
-            for (int i = 0; i < Constants.NumberOfFeatures; i++)
+            for (int i = 0; i < numberOfFeatures; i++)
             {
                 newTheta.Add(theta[i] - this.CalculateNewTheta(theta, alpha, i));
             }

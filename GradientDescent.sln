@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradientDescent.MultipleFeatures", "GradientDescent.MultipleFeatures\GradientDescent.MultipleFeatures.csproj", "{EBDB0D67-241B-4953-BB8C-1C55A3AB9E4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradientDescent.LinearRegression", "GradientDescent.MultipleFeatures\GradientDescent.LinearRegression.csproj", "{EBDB0D67-241B-4953-BB8C-1C55A3AB9E4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradientDescent.Plot", "GradientDescent.Plot\GradientDescent.Plot.csproj", "{1C229942-FE48-4811-B8BF-B64976159B0F}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradientDescent.Data", "GradientDescent.Data\GradientDescent.Data.csproj", "{A123C6DD-A9AE-4164-AB2F-00A9585F414E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradientDescent.Common", "GradientDescent.Common\GradientDescent.Common.csproj", "{E2970C90-18C9-4637-9909-8B6B4CE7F836}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{14CB0736-EA2F-48D7-B2DB-C2C1A1A9ADEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,5 +44,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EBDB0D67-241B-4953-BB8C-1C55A3AB9E4C} = {14CB0736-EA2F-48D7-B2DB-C2C1A1A9ADEA}
 	EndGlobalSection
 EndGlobal

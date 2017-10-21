@@ -4,6 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GradientDescent.Core.LinearRegression.Services;
+using GradientDescent.Data.DataSource;
+using GradientDescent.Data.Models.LinearRegression;
 using MathNet.Numerics.LinearAlgebra;
 
 namespace GradientDescent.MultipleFeatures
@@ -21,154 +24,57 @@ namespace GradientDescent.MultipleFeatures
 
         static void Main(string[] args)
         {
-            string startupPath = System.IO.Directory.GetCurrentDirectory();
-            string path = @"c:\temp\MyTest.txt";
-            try
-            {
-                if (File.Exists(path))
-                {
-                    File.Delete(path);
-                }
+            var normalize = new ValueNormalizer();
+            var dataTransformer = new DataTransformer();
+            var dataSupplier = new DataSourceSupplier();
+            
 
-                using (StreamWriter sw = new StreamWriter(path))
-                {
-                    sw.WriteLine("This");
-                    sw.WriteLine("is some text");
-                    sw.WriteLine("to test");
-                    sw.WriteLine("Reading");
-                }
+            var data = dataSupplier.GetTrainingSet().ToList();
+            var trainingSet = GetNormalizedData();
+            var functions = new FunctionsCalculator(trainingSet);
+            var newHouse = new double[] { 1, 1203, 3 };
+            double predictedPrice = 0.0;
+            var actualPrice = 239500;
+            var theta = new double[] { 89597.9027899082, 504777.895309395, -34952.0620218024 };
 
-                using (StreamReader sr = new StreamReader(path))
-                {
-                    while (sr.Peek() >= 0)
-                    {
-                        Console.WriteLine(sr.ReadLine());
-                    }
-                }
-            }
-            catch (Exception e)
+            for (int i = 1; i <= 2; i++)
             {
-                Console.WriteLine("The process failed: {0}", e.ToString());
+                var featureVector = dataTransformer.GetNthFeatureVector(data, i).ToArray();
+                var min = featureVector.Min();
+                var max = featureVector.Max();
+                newHouse[i] = normalize.FeatureScaling(min, max, newHouse[i]);
             }
+
+
+            predictedPrice = functions.Hypothesis(newHouse, theta);
+
+            Console.WriteLine($"Actual price: {actualPrice}" );
+            Console.WriteLine($"Predicted price: {predictedPrice}");
             Console.Read();
         }
-
-        public static void Converge()
+        private static IEnumerable<TrainingElement> GetNormalizedData()
         {
-            var theta = GetInitialThetas();
-            
-            // learning rate
-            double alpha = 0.01;
-            
-        }
+            var dataSupplier = new DataSourceSupplier();
+            var dataTransformer = new DataTransformer();
 
-        public static IEnumerable<House> GetSampleData()
-        {
-            yield return new House
+            var data = dataSupplier.GetTrainingSet().ToList();
+
+            var valueNormalizer = new ValueNormalizer();
+            var featuresCount = data.First().Features.Count() - 1;
+
+            for (int i = 1; i <= featuresCount; i++)
             {
-                Size = 2104,
-                NumberOfBedrooms = 5,
-                NumberOfFloors = 1,
-                Age = 45,
-                Price = 460
-            };
-            yield return new House
-            {
-                Size = 1416,
-                NumberOfBedrooms = 3,
-                NumberOfFloors = 2,
-                Age = 40,
-                Price = 232
-
-            };
-            yield return new House
-            {
-                Size = 1534,
-                NumberOfBedrooms = 3,
-                NumberOfFloors = 2,
-                Age = 30,
-                Price = 315
-
-            };
-            yield return new House
-            {
-                Size = 852,
-                NumberOfBedrooms = 2,
-                NumberOfFloors = 1,
-                Age = 36,
-                Price = 178
-
-            };
-        }
-
-        public static double[] GetInitialThetas()
-        {
-            return new double[NumberOfFeatures];
-        }
-
-        public static double Hypothesis(int[] features, double[] theta)
-        {
-            double hypothesis = features[0] * theta[0] + features[1] * theta[1] + features[2] * theta[2] +
-                                features[3] * theta[3] + features[4] * theta[4];
-            return hypothesis;
-        }
-
-        public static int[] GetFeaturesVector(House house)
-        {
-            return new int[]
-            {
-                1,
-                house.Size,
-                house.NumberOfBedrooms,
-                house.NumberOfFloors,
-                house.Age
-            };
-        }
-
-        public double CostFuction(double[] theta)
-        {
-            var houses = GetSampleData().ToList();
-            var numberOfTrainingExamples = houses.Count;
-            double result = 0.0;
-            for (int i = 1; i <= numberOfTrainingExamples; i++)
-            {
-                var features = GetFeaturesVector(houses[i]);
-                result += Math.Pow(Hypothesis(features, theta) - houses[i].Price, 2);
-            }
-            return 1 * result / (2 * numberOfTrainingExamples);
-        }
-
-        public double CostFuctionDerivated(double[] theta, double alpha, int featureNumber)
-        {
-            var houses = GetSampleData().ToList();
-            var numberOfTrainingExamples = houses.Count;
-
-            double result = 0.0;
-            for (int i = 0; i < numberOfTrainingExamples; i++)
-            {
-                var features = GetFeaturesVector(houses[i]);
-                result += (Hypothesis(features, theta) - houses[i].Price) * features[featureNumber];
-            }
-            return (1 * alpha * result) / numberOfTrainingExamples;
-        }
-
-
-        public double[] GradientDescent(double[] theta, double alpha)
-        {
-            List<double> newTheta = new List<double>();
-
-            for (int i = 0; i < NumberOfFeatures; i++)
-            {
-                newTheta.Add(theta[i] - CostFuctionDerivated(theta, alpha, i));
+                var featureVector = dataTransformer.GetNthFeatureVector(data, i).ToArray();
+                var min = featureVector.Min();
+                var max = featureVector.Max();
+                for (int j = 0; j < featureVector.Length; j++)
+                {
+                    data[j].Features[i] = valueNormalizer.FeatureScaling(min, max, featureVector[j]);
+                }
             }
 
-            return newTheta.ToArray();
+            return data;
         }
-
-        public double NormalizeData(double[] data)
-        {
-            double maxElement = data.Max();
-            return 0;
-        }
+        
     }
 }

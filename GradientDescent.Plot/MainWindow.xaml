@@ -5,7 +5,7 @@
         xmlns:viewModels="clr-namespace:GradientDescent.Plot.ViewModels"
         Title="Example 2 (WPF)" Height="350" Width="525">
     <Window.DataContext>
-        <viewModels:MainWindowModel/>
+        <viewModels:MainWindowModelLinearRegression/>
     </Window.DataContext>
     <Grid>
         <oxy:Plot Title="{Binding Title}">
